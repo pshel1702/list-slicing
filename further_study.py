@@ -212,8 +212,7 @@ def custom_reverse(input_list):
     """
 
     #Slice the input list from negative index, using -1 as the step
-    input_list[:] = input_list[-1:custom_len(input_list):-1]
-
+    input_list[:] = input_list[::-1]
     pass
 
 
