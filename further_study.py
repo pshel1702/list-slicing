@@ -49,12 +49,12 @@ def custom_append(input_list, value):
         >>> notes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
         >>> custom_append(notes, 'Re')
         >>> notes == ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do', 'Re']
-       
         True
 
     """
-    value = [value]
-    input_list[custom_len(input_list):] = value[:]
+    temp_list = []
+    temp_list[:custom_len(input_list)] = input_list[:]
+    input_list[:] = temp_list[:] + [value]
     pass
 
 
