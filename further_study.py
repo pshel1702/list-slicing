@@ -52,6 +52,10 @@ def custom_append(input_list, value):
         True
 
     """
+    #Create a new empty list
+    #Copy the input list into the new list
+    #Add the value to the end of the new list
+    #Credit to Michal Chruszcz for the appending idea in https://stackoverflow.com/questions/5314820/functional-append-extend
     temp_list = []
     temp_list[:custom_len(input_list)] = input_list[:]
     input_list[:] = temp_list[:] + [value]
