@@ -3,6 +3,7 @@
 from list_operations import *
 
 
+
 def custom_len(input_list):
     """Return number of items in the list.
 
@@ -16,8 +17,16 @@ def custom_len(input_list):
 
     """
 
-    return 0
-
+    #Iterate through the input_list until index goes out of range
+    #Return index
+    i = 0
+    while True:
+        try:
+            input_list[i]
+            i = i+1
+        except:
+            break
+    return i
 
 # For the next four exercises, you'll need to be clever and think about ways
 # to use list slice assignment.
@@ -40,10 +49,12 @@ def custom_append(input_list, value):
         >>> notes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do']
         >>> custom_append(notes, 'Re')
         >>> notes == ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do', 'Re']
+       
         True
 
     """
-
+    value = [value]
+    input_list[custom_len(input_list):] = value[:]
     pass
 
 
@@ -63,8 +74,9 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    input_list[:] = input_list[:] + second_list[:]
 
+    pass
 
 def custom_insert(input_list, index, value):
     """Insert value at index in the list.
@@ -80,6 +92,9 @@ def custom_insert(input_list, index, value):
         True
 
     """
+    temp_end = input_list[-1]
+    input_list[index:(index+1)] = [value]
+    input_list[custom_len(input_list):]= [temp_end]
 
     pass
 
@@ -100,6 +115,13 @@ def custom_remove(input_list, value):
 
     """
 
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            x = i
+        break
+    
+    input_list[:] = input_list[0:x] + input_list[x+1:]
+
     pass
 
 
@@ -118,8 +140,13 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
+    #Remove list element with index -1
+    #return this element
 
-    return None
+    last_element = input_list[-1]
+    input_list[:] = input_list[0:(custom_len(input_list)-1)]
+
+    return last_element
 
 
 def custom_index(input_list, value):
@@ -135,7 +162,14 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    #Save the iterable for first match of value
+    #Break the loop
+    #Return the iterable
+
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            index_of = i
+            return i
 
 
 def custom_count(input_list, value):
