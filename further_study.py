@@ -59,7 +59,7 @@ def custom_append(input_list, value):
     temp_list = []
     temp_list[:custom_len(input_list)] = input_list[:]
     temp_list[custom_len(input_list):] = [value]
-    input_list = temp_list
+    input_list[:] = temp_list[:]
 
     pass
 
