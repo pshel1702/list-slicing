@@ -19,14 +19,10 @@ def custom_len(input_list):
 
     #Iterate through the input_list until index goes out of range
     #Return index
-    i = 0
-    while True:
-        try:
-            input_list[i]
-            i = i+1
-        except:
-            break
-    return i
+    count = 0
+    for word in input_list:
+        count += 1
+    return count
 
 # For the next four exercises, you'll need to be clever and think about ways
 # to use list slice assignment.
@@ -52,14 +48,12 @@ def custom_append(input_list, value):
         True
 
     """
-    #Create a new empty list
-    #Copy the input list into the new list
-    #Add the value to the end of the new list
-    #Credit to Michal Chruszcz for the appending idea in https://stackoverflow.com/questions/5314820/functional-append-extend
-    temp_list = []
-    temp_list[:custom_len(input_list)] = input_list[:]
-    temp_list[custom_len(input_list):] = [value]
-    input_list[:] = temp_list[:]
+    #Slice the input list from the last index on
+    #assign the value to the sliced list
+
+    input_list[custom_len(input_list):] = [value]
+    
+
 
     pass
 
